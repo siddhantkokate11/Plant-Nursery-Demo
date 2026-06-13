@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GreenVista Plant Nursery — Premium indoor, outdoor, flowering & fruit plants, landscaping services, and bulk supply across Pune, Maharashtra." />
+  <meta name="keywords" content="plant nursery Pune, indoor plants Pune, landscaping Pune, buy plants Pune, GreenVista nursery" />
+  <title>GreenVista Plant Nursery | Premium Plants & Landscaping in Pune</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest:  { DEFAULT: '#1a3c2e', 50: '#f0f7f3', 100: '#d6ece0', 200: '#aed9c2', 300: '#7ec0a1', 400: '#4da07d', 500: '#2d7d5a', 600: '#1e6147', 700: '#1a3c2e', 800: '#162f24', 900: '#0e1f18' },
+            sage:    { DEFAULT: '#6b9e7e', 50: '#f4f9f6', 100: '#e2f0e8', 200: '#c4e1d2', 300: '#97c8b0', 400: '#6b9e7e', 500: '#4d8063', 600: '#3a6450', 700: '#2e4f40', 800: '#243d32', 900: '#1b2e25' },
+            cream:   { DEFAULT: '#faf7f2', 50: '#fdfcfa', 100: '#faf7f2', 200: '#f3ece0', 300: '#e8d9c4' },
+            olive:   { DEFAULT: '#8a9e72', 100: '#eef1e8', 200: '#d4dcca', 300: '#adb89a', 400: '#8a9e72', 500: '#6d8254' },
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base ── */
+    body { font-family: 'Inter', sans-serif; background: #faf7f2; color: #1a3c2e; }
+    h1,h2,h3 { font-family: 'DM Serif Display', Georgia, serif; }
+
+    /* ── Nav ── */
+    #navbar { transition: background 0.3s, box-shadow 0.3s; }
+    #navbar.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 2px 24px rgba(26,60,46,0.10); }
+
+    /* ── Hero ── */
+    .hero-bg {
+      background: linear-gradient(135deg, rgba(14,31,24,0.72) 0%, rgba(26,60,46,0.55) 60%, rgba(45,125,90,0.35) 100%),
+                  url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1800&q=85&fit=crop') center/cover no-repeat;
+    }
+
+    /* ── Gradient text ── */
+    .grad-text { background: linear-gradient(135deg, #1a3c2e 0%, #4da07d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* ── Cards ── */
+    .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,60,46,0.13); }
+
+    .plant-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .plant-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,60,46,0.14); }
+
+    /* ── Gallery masonry ── */
+    .masonry { columns: 3; column-gap: 1rem; }
+    @media(max-width:768px){ .masonry{ columns:2; } }
+    @media(max-width:480px){ .masonry{ columns:1; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 1rem; border-radius: 1rem; overflow: hidden; position: relative; }
+    .masonry-item img { width: 100%; display: block; transition: transform 0.4s ease; }
+    .masonry-item:hover img { transform: scale(1.04); }
+    .masonry-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,31,24,0.65) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1rem; }
+    .masonry-item:hover .masonry-overlay { opacity: 1; }
+
+    /* ── Timeline ── */
+    .step-line::before { content:''; position:absolute; left:50%; top:100%; width:2px; height:2rem; background: #aed9c2; transform:translateX(-50%); }
+    @media(max-width:768px){ .step-line::before{ left:1.75rem; } }
+
+    /* ── Floating buttons ── */
+    .float-btn { position: fixed; right: 1.25rem; z-index: 999; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; text-decoration: none; }
+    .float-btn:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    #float-wa  { bottom: 7rem; background: #25d366; }
+    #float-call{ bottom: 4.5rem; background: #1a3c2e; }
+    #back-top  { bottom: 1.5rem; background: white; color: #1a3c2e; border: 2px solid #aed9c2; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.2s, box-shadow 0.2s; }
+    #back-top.show { opacity: 1; pointer-events: auto; }
+
+    /* ── FAQ ── */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; }
+    .faq-answer.open { max-height: 200px; }
+    .faq-icon { transition: transform 0.3s; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+    /* ── Nav link ── */
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:2px; background:#4da07d; transition:width 0.3s; }
+    .nav-link:hover::after,.nav-link.active::after{ width:100%; }
+
+    /* ── Section label ── */
+    .section-label { display:inline-block; background:#e2f0e8; color:#1a3c2e; font-weight:600; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.35rem 1rem; border-radius:999px; margin-bottom:1rem; }
+
+    /* ── Testimonial card ── */
+    .testimonial-card { transition: transform 0.3s, box-shadow 0.3s; }
+    .testimonial-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(26,60,46,0.12); }
+
+    /* ── Input focus ── */
+    input:focus,textarea:focus,select:focus { outline: none; border-color: #4da07d; box-shadow: 0 0 0 3px rgba(77,160,125,0.15); }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ══════════════════════════════════════════
+     FLOATING BUTTONS
+══════════════════════════════════════════ -->
+<a id="float-wa" class="float-btn" href="https://wa.me/919876543210?text=Hi%20GreenVista!%20I%27d%20like%20to%20know%20more%20about%20your%20plants." target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp text-white text-xl"></i>
+</a>
+<a id="float-call" class="float-btn md:hidden" href="tel:+919876543210" aria-label="Call Us">
+  <i class="fas fa-phone text-white text-base"></i>
+</a>
+<button id="back-top" class="float-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <i class="fas fa-arrow-up text-sm"></i>
+</button>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[70px]">
+
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-forest flex items-center justify-center shadow-md group-hover:bg-sage transition-colors">
+          <i class="fas fa-leaf text-white text-sm"></i>
+        </div>
+        <div class="leading-tight">
+          <span class="block font-serif text-lg text-white nav-logo-text transition-colors">GreenVista</span>
+          <span class="block text-[10px] text-forest-200 nav-logo-sub tracking-widest uppercase transition-colors">Plant Nursery</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden lg:flex items-center gap-7">
+        <a href="#about"        class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors nav-text">About</a>
+        <a href="#services"     class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors nav-text">Services</a>
+        <a href="#plants"       class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors nav-text">Plants</a>
+        <a href="#why-us"       class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors nav-text">Why Us</a>
+        <a href="#gallery"      class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors nav-text">Gallery</a>
+        <a href="#testimonials" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors nav-text">Reviews</a>
+        <a href="#contact"      class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors nav-text">Contact</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="tel:+919876543210" class="flex items-center gap-2 text-sm font-semibold text-white bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full hover:bg-white/20 transition-all">
+          <i class="fas fa-phone text-xs"></i> Call Now
+        </a>
+        <a href="#contact" class="text-sm font-semibold text-forest bg-white px-5 py-2 rounded-full hover:bg-cream-200 transition-all shadow-md">
+          Free Consultation
+        </a>
+      </div>
+
+      <!-- Mobile menu btn -->
+      <button id="menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span class="menu-line block w-6 h-0.5 bg-white rounded transition-all"></span>
+        <span class="menu-line block w-6 h-0.5 bg-white rounded transition-all"></span>
+        <span class="menu-line block w-4 h-0.5 bg-white rounded transition-all"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-forest-100 shadow-xl">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
+      <a href="#about"        onclick="closeMenu()" class="text-forest font-medium py-3 border-b border-forest-50 hover:text-sage transition-colors">About</a>
+      <a href="#services"     onclick="closeMenu()" class="text-forest font-medium py-3 border-b border-forest-50 hover:text-sage transition-colors">Services</a>
+      <a href="#plants"       onclick="closeMenu()" class="text-forest font-medium py-3 border-b border-forest-50 hover:text-sage transition-colors">Plants</a>
+      <a href="#why-us"       onclick="closeMenu()" class="text-forest font-medium py-3 border-b border-forest-50 hover:text-sage transition-colors">Why Us</a>
+      <a href="#gallery"      onclick="closeMenu()" class="text-forest font-medium py-3 border-b border-forest-50 hover:text-sage transition-colors">Gallery</a>
+      <a href="#testimonials" onclick="closeMenu()" class="text-forest font-medium py-3 border-b border-forest-50 hover:text-sage transition-colors">Reviews</a>
+      <a href="#contact"      onclick="closeMenu()" class="text-forest font-medium py-3 hover:text-sage transition-colors">Contact</a>
+      <div class="mt-3 grid grid-cols-2 gap-3">
+        <a href="tel:+919876543210" class="flex items-center justify-center gap-2 text-sm font-semibold text-white bg-forest py-3 rounded-xl">
+          <i class="fas fa-phone text-xs"></i> Call Us
+        </a>
+        <a href="https://wa.me/919876543210" target="_blank" class="flex items-center justify-center gap-2 text-sm font-semibold text-white bg-[#25d366] py-3 rounded-xl">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="home" class="hero-bg min-h-screen flex flex-col justify-center relative overflow-hidden">
+
+  <!-- Decorative dots -->
+  <div class="absolute top-32 right-16 w-64 h-64 rounded-full border border-white/10 opacity-40"></div>
+  <div class="absolute bottom-24 left-10  w-40 h-40 rounded-full border border-white/10 opacity-30"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full mb-6 tracking-wide">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        Pune's Trusted Plant Nursery Since 2008
+      </div>
+
+      <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.1] mb-6">
+        Transform Your<br />
+        <em class="not-italic text-green-300">Space with</em> Nature
+      </h1>
+
+      <p class="text-white/80 text-lg sm:text-xl leading-relaxed mb-10 max-w-xl">
+        Premium plants, expert guidance, and trusted landscaping services across Pune. We bring greenery to homes, offices, and commercial spaces — with care that lasts.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 mb-12">
+        <a href="#contact" class="inline-flex items-center gap-2.5 bg-white text-forest font-semibold px-7 py-3.5 rounded-full shadow-xl hover:shadow-2xl hover:bg-cream-100 transition-all text-sm sm:text-base">
+          <i class="fas fa-leaf text-sage"></i>
+          Get Free Consultation
+        </a>
+        <a href="https://wa.me/919876543210?text=Hi!%20I%27d%20like%20a%20free%20plant%20consultation." target="_blank"
+           class="inline-flex items-center gap-2.5 bg-[#25d366] text-white font-semibold px-7 py-3.5 rounded-full hover:bg-[#1fb85a] transition-all shadow-lg text-sm sm:text-base">
+          <i class="fab fa-whatsapp text-lg"></i>
+          WhatsApp Us
+        </a>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="flex flex-wrap gap-x-8 gap-y-3">
+        <div class="flex items-center gap-2 text-white/90 text-sm">
+          <i class="fas fa-check-circle text-green-400"></i>
+          <span>5000+ Plants Delivered</span>
+        </div>
+        <div class="flex items-center gap-2 text-white/90 text-sm">
+          <i class="fas fa-check-circle text-green-400"></i>
+          <span>Trusted Across Pune</span>
+        </div>
+        <div class="flex items-center gap-2 text-white/90 text-sm">
+          <i class="fas fa-check-circle text-green-400"></i>
+          <span>Home &amp; Commercial Projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="absolute bottom-0 left-0 right-0 bg-white/10 backdrop-blur-md border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-white text-center">
+        <div><div class="font-serif text-2xl sm:text-3xl">5K+</div><div class="text-xs text-white/70 mt-0.5">Plants Delivered</div></div>
+        <div><div class="font-serif text-2xl sm:text-3xl">800+</div><div class="text-xs text-white/70 mt-0.5">Happy Customers</div></div>
+        <div><div class="font-serif text-2xl sm:text-3xl">15+</div><div class="text-xs text-white/70 mt-0.5">Years Experience</div></div>
+        <div><div class="font-serif text-2xl sm:text-3xl">200+</div><div class="text-xs text-white/70 mt-0.5">Plant Varieties</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<section id="about" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Images -->
+      <div class="relative">
+        <div class="grid grid-cols-2 gap-4">
+          <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&q=80&fit=crop" alt="Nursery interior" class="rounded-2xl w-full h-64 object-cover shadow-xl col-span-2" />
+          <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=400&q=80&fit=crop" alt="Plant care" class="rounded-2xl w-full h-44 object-cover shadow-lg" />
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop" alt="Nursery plants" class="rounded-2xl w-full h-44 object-cover shadow-lg" />
+        </div>
+        <!-- Floating badge -->
+        <div class="absolute -bottom-6 -right-4 bg-forest text-white rounded-2xl px-5 py-4 shadow-2xl text-center">
+          <div class="font-serif text-3xl text-green-300">15+</div>
+          <div class="text-xs text-white/80 mt-0.5 font-medium">Years of<br/>Excellence</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="lg:pl-8">
+        <span class="section-label">Our Story</span>
+        <h2 class="font-serif text-4xl sm:text-5xl text-forest leading-tight mb-6">
+          A Family's Passion<br />for Greenery
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-5">
+          GreenVista started in 2008 as a small family-run nursery in Pune with one simple belief — every home, every office, every corner of the city deserves a touch of nature. What began in a modest plot has grown into one of Pune's most trusted plant nurseries, with over 200 plant varieties and a team that genuinely loves what they do.
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          We're not just selling plants. We guide you, we follow up, we show up when your plant needs re-potting help at 6 PM on a weekday. That's how local business works — with real relationships. Our team speaks your language, understands Pune's climate, and picks the right plant for your exact space.
+        </p>
+
+        <!-- Values -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-forest-50 border border-forest-100">
+            <div class="w-8 h-8 rounded-lg bg-forest flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-heart text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-forest text-sm">Family-Run</div>
+              <div class="text-xs text-gray-500 mt-0.5">Personal care in every delivery</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-forest-50 border border-forest-100">
+            <div class="w-8 h-8 rounded-lg bg-forest flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-seedling text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-forest text-sm">Nursery-Grown</div>
+              <div class="text-xs text-gray-500 mt-0.5">Healthy plants from our own nursery</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-forest-50 border border-forest-100">
+            <div class="w-8 h-8 rounded-lg bg-forest flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-recycle text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-forest text-sm">Sustainable</div>
+              <div class="text-xs text-gray-500 mt-0.5">Eco-friendly gardening practices</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-forest-50 border border-forest-100">
+            <div class="w-8 h-8 rounded-lg bg-forest flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-map-marker-alt text-white text-xs"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-forest text-sm">Pune-Local</div>
+              <div class="text-xs text-gray-500 mt-0.5">Deep roots in the local community</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════ -->
+<section id="services" class="py-24 bg-cream-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="section-label">What We Offer</span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-forest">Everything Your Green Space Needs</h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto">From a single potted plant to a full landscaping project — we've got you covered.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Service 1 -->
+      <div class="service-card bg-white rounded-2xl p-7 shadow-sm border border-forest-50 group cursor-default">
+        <div class="w-12 h-12 rounded-xl bg-forest-50 flex items-center justify-center mb-5 group-hover:bg-forest transition-colors">
+          <i class="fas fa-couch text-forest group-hover:text-white text-xl transition-colors"></i>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Indoor Plants</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Air-purifying, low-maintenance indoor plants for living rooms, offices, and studios. We help you pick the right one for your light condition and lifestyle.</p>
+        <div class="mt-5 flex items-center gap-1.5 text-sage font-semibold text-sm group-hover:text-forest transition-colors">
+          Enquire <i class="fas fa-arrow-right text-xs ml-1"></i>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card bg-white rounded-2xl p-7 shadow-sm border border-forest-50 group cursor-default">
+        <div class="w-12 h-12 rounded-xl bg-forest-50 flex items-center justify-center mb-5 group-hover:bg-forest transition-colors">
+          <i class="fas fa-tree text-forest group-hover:text-white text-xl transition-colors"></i>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Outdoor Plants</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Hardy plants suited for Pune's climate — shrubs, hedges, ornamentals, and ground covers ideal for gardens, terraces, and boundary walls.</p>
+        <div class="mt-5 flex items-center gap-1.5 text-sage font-semibold text-sm group-hover:text-forest transition-colors">
+          Enquire <i class="fas fa-arrow-right text-xs ml-1"></i>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="service-card bg-white rounded-2xl p-7 shadow-sm border border-forest-50 group cursor-default">
+        <div class="w-12 h-12 rounded-xl bg-forest-50 flex items-center justify-center mb-5 group-hover:bg-forest transition-colors">
+          <i class="fas fa-spa text-forest group-hover:text-white text-xl transition-colors"></i>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Flowering Plants</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Seasonal and perennial flowering plants to brighten up your spaces. Roses, hibiscus, bougainvillea, marigolds, and more — always in bloom.</p>
+        <div class="mt-5 flex items-center gap-1.5 text-sage font-semibold text-sm group-hover:text-forest transition-colors">
+          Enquire <i class="fas fa-arrow-right text-xs ml-1"></i>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="service-card bg-white rounded-2xl p-7 shadow-sm border border-forest-50 group cursor-default">
+        <div class="w-12 h-12 rounded-xl bg-forest-50 flex items-center justify-center mb-5 group-hover:bg-forest transition-colors">
+          <i class="fas fa-apple-alt text-forest group-hover:text-white text-xl transition-colors"></i>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Fruit Plants</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Grow your own food! Lemon, mango, guava, papaya, pomegranate, and more — perfect for home gardens and kitchen gardens.</p>
+        <div class="mt-5 flex items-center gap-1.5 text-sage font-semibold text-sm group-hover:text-forest transition-colors">
+          Enquire <i class="fas fa-arrow-right text-xs ml-1"></i>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="service-card bg-forest rounded-2xl p-7 shadow-xl group cursor-default relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-sage/20 to-transparent pointer-events-none"></div>
+        <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-5">
+          <i class="fas fa-mountain text-white text-xl"></i>
+        </div>
+        <h3 class="font-serif text-xl text-white mb-2">Landscaping Services</h3>
+        <p class="text-white/75 text-sm leading-relaxed">End-to-end landscape design and execution for homes, society compounds, hotels, and commercial properties. Site visit + consultation included.</p>
+        <div class="mt-5 flex items-center gap-1.5 text-green-300 font-semibold text-sm">
+          Enquire <i class="fas fa-arrow-right text-xs ml-1"></i>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="service-card bg-white rounded-2xl p-7 shadow-sm border border-forest-50 group cursor-default">
+        <div class="w-12 h-12 rounded-xl bg-forest-50 flex items-center justify-center mb-5 group-hover:bg-forest transition-colors">
+          <i class="fas fa-boxes text-forest group-hover:text-white text-xl transition-colors"></i>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Bulk Plant Supply</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">For schools, hospitals, IT parks, restaurants, and housing societies. We supply large quantities with special pricing, timely delivery, and post-supply care.</p>
+        <div class="mt-5 flex items-center gap-1.5 text-sage font-semibold text-sm group-hover:text-forest transition-colors">
+          Enquire <i class="fas fa-arrow-right text-xs ml-1"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FEATURED PLANTS
+══════════════════════════════════════════ -->
+<section id="plants" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="section-label">Popular Plants</span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-forest">Our Customer Favourites</h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto">Handpicked plants that thrive in Pune's climate and bring joy to every space.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Plant 1 -->
+      <div class="plant-card bg-white rounded-2xl overflow-hidden border border-forest-100 shadow-sm">
+        <div class="h-52 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1572688484438-313a6e50c333?w=600&q=80&fit=crop" alt="Snake Plant" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-forest text-xs font-semibold px-3 py-1 rounded-full">Indoor</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-serif text-xl text-forest">Snake Plant</h3>
+          <p class="text-xs text-sage font-medium mt-0.5 mb-3">Sansevieria trifasciata</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Air Purifier</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Low Maintenance</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Low Light</span>
+          </div>
+          <a href="https://wa.me/919876543210?text=Hi!%20I%27m%20interested%20in%20Snake%20Plant." target="_blank"
+             class="block w-full text-center bg-forest text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-sage transition-colors">
+            Inquire Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Plant 2 -->
+      <div class="plant-card bg-white rounded-2xl overflow-hidden border border-forest-100 shadow-sm">
+        <div class="h-52 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=600&q=80&fit=crop" alt="Areca Palm" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-forest text-xs font-semibold px-3 py-1 rounded-full">Indoor / Outdoor</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-serif text-xl text-forest">Areca Palm</h3>
+          <p class="text-xs text-sage font-medium mt-0.5 mb-3">Dypsis lutescens</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Humidity Control</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Non-Toxic</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Pet-Safe</span>
+          </div>
+          <a href="https://wa.me/919876543210?text=Hi!%20I%27m%20interested%20in%20Areca%20Palm." target="_blank"
+             class="block w-full text-center bg-forest text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-sage transition-colors">
+            Inquire Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Plant 3 -->
+      <div class="plant-card bg-white rounded-2xl overflow-hidden border border-forest-100 shadow-sm">
+        <div class="h-52 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1587334274328-64186a80aeee?w=600&q=80&fit=crop" alt="Money Plant" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-forest text-xs font-semibold px-3 py-1 rounded-full">Indoor</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-serif text-xl text-forest">Money Plant</h3>
+          <p class="text-xs text-sage font-medium mt-0.5 mb-3">Epipremnum aureum</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Beginner Friendly</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Trailing Vines</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Air Purifier</span>
+          </div>
+          <a href="https://wa.me/919876543210?text=Hi!%20I%27m%20interested%20in%20Money%20Plant." target="_blank"
+             class="block w-full text-center bg-forest text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-sage transition-colors">
+            Inquire Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Plant 4 -->
+      <div class="plant-card bg-white rounded-2xl overflow-hidden border border-forest-100 shadow-sm">
+        <div class="h-52 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1595351475754-8a661f026e8a?w=600&q=80&fit=crop" alt="Hibiscus" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-forest text-xs font-semibold px-3 py-1 rounded-full">Outdoor</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-serif text-xl text-forest">Hibiscus</h3>
+          <p class="text-xs text-sage font-medium mt-0.5 mb-3">Hibiscus rosa-sinensis</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Year-Round Bloom</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Medicinal</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Attracts Birds</span>
+          </div>
+          <a href="https://wa.me/919876543210?text=Hi!%20I%27m%20interested%20in%20Hibiscus%20plant." target="_blank"
+             class="block w-full text-center bg-forest text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-sage transition-colors">
+            Inquire Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Plant 5 -->
+      <div class="plant-card bg-white rounded-2xl overflow-hidden border border-forest-100 shadow-sm">
+        <div class="h-52 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&fit=crop" alt="Lemon Plant" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-forest text-xs font-semibold px-3 py-1 rounded-full">Fruit</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-serif text-xl text-forest">Lemon Plant</h3>
+          <p class="text-xs text-sage font-medium mt-0.5 mb-3">Citrus limon</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Kitchen Garden</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Fragrant</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Dwarf Variety</span>
+          </div>
+          <a href="https://wa.me/919876543210?text=Hi!%20I%27m%20interested%20in%20Lemon%20Plant." target="_blank"
+             class="block w-full text-center bg-forest text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-sage transition-colors">
+            Inquire Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Plant 6 -->
+      <div class="plant-card bg-white rounded-2xl overflow-hidden border border-forest-100 shadow-sm">
+        <div class="h-52 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1534710961216-75c88202f43e?w=600&q=80&fit=crop" alt="Bougainvillea" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-forest text-xs font-semibold px-3 py-1 rounded-full">Outdoor</div>
+        </div>
+        <div class="p-5">
+          <h3 class="font-serif text-xl text-forest">Bougainvillea</h3>
+          <p class="text-xs text-sage font-medium mt-0.5 mb-3">Bougainvillea spectabilis</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Vibrant Colors</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Drought Tolerant</span>
+            <span class="bg-forest-50 text-forest-700 text-xs px-2.5 py-1 rounded-full">Climber</span>
+          </div>
+          <a href="https://wa.me/919876543210?text=Hi!%20I%27m%20interested%20in%20Bougainvillea." target="_blank"
+             class="block w-full text-center bg-forest text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-sage transition-colors">
+            Inquire Now
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="#contact" class="inline-flex items-center gap-2 border-2 border-forest text-forest font-semibold px-8 py-3 rounded-full hover:bg-forest hover:text-white transition-all text-sm">
+        <i class="fas fa-leaf"></i> View All 200+ Varieties
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     WHY US
+══════════════════════════════════════════ -->
+<section id="why-us" class="py-24 bg-forest relative overflow-hidden">
+  <!-- Decorative -->
+  <div class="absolute top-0 right-0 w-96 h-96 bg-sage/10 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-green-400/5 rounded-full translate-y-1/2 -translate-x-1/3"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-14">
+      <span class="inline-block bg-white/10 text-white/80 font-semibold text-xs letter-spacing px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase">Why Choose Us</span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-white">Why Pune Trusts GreenVista</h2>
+      <p class="text-white/60 mt-4 max-w-lg mx-auto">We're not just a nursery. We're your long-term green partner.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="bg-white/8 border border-white/10 rounded-2xl p-7 backdrop-blur-sm hover:bg-white/12 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-green-400/20 flex items-center justify-center mb-5">
+          <i class="fas fa-user-graduate text-green-300 text-xl"></i>
+        </div>
+        <h3 class="font-serif text-xl text-white mb-2">Expert Plant Guidance</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Our team doesn't just hand you a plant. We explain care routines, watering schedules, and light requirements for your specific space.</p>
+      </div>
+
+      <div class="bg-white/8 border border-white/10 rounded-2xl p-7 backdrop-blur-sm hover:bg-white/12 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-green-400/20 flex items-center justify-center mb-5">
+          <i class="fas fa-seedling text-green-300 text-xl"></i>
+        </div>
+        <h3 class="font-serif text-xl text-white mb-2">Healthy Nursery-Grown</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Every plant is grown in our own nursery — no middlemen, no stressed plants. You get healthy, acclimatized plants ready for your home.</p>
+      </div>
+
+      <div class="bg-white/8 border border-white/10 rounded-2xl p-7 backdrop-blur-sm hover:bg-white/12 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-green-400/20 flex items-center justify-center mb-5">
+          <i class="fas fa-tag text-green-300 text-xl"></i>
+        </div>
+        <h3 class="font-serif text-xl text-white mb-2">Affordable Pricing</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Fair prices with no hidden charges. We believe greenery should be accessible to everyone — from ₹50 saplings to premium landscaping projects.</p>
+      </div>
+
+      <div class="bg-white/8 border border-white/10 rounded-2xl p-7 backdrop-blur-sm hover:bg-white/12 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-green-400/20 flex items-center justify-center mb-5">
+          <i class="fas fa-truck text-green-300 text-xl"></i>
+        </div>
+        <h3 class="font-serif text-xl text-white mb-2">Doorstep Delivery</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Safe, careful delivery across Pune — Kothrud, Baner, Wakad, Viman Nagar, Hadapsar, and beyond. We handle the transport so plants arrive undamaged.</p>
+      </div>
+
+      <div class="bg-white/8 border border-white/10 rounded-2xl p-7 backdrop-blur-sm hover:bg-white/12 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-green-400/20 flex items-center justify-center mb-5">
+          <i class="fas fa-drafting-compass text-green-300 text-xl"></i>
+        </div>
+        <h3 class="font-serif text-xl text-white mb-2">Landscaping Expertise</h3>
+        <p class="text-white/60 text-sm leading-relaxed">15+ years of landscape design across residential, commercial, and institutional projects. We've transformed plain spaces into stunning green environments.</p>
+      </div>
+
+      <div class="bg-white/8 border border-white/10 rounded-2xl p-7 backdrop-blur-sm hover:bg-white/12 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-green-400/20 flex items-center justify-center mb-5">
+          <i class="fas fa-headset text-green-300 text-xl"></i>
+        </div>
+        <h3 class="font-serif text-xl text-white mb-2">Ongoing Support</h3>
+        <p class="text-white/60 text-sm leading-relaxed">Your relationship with us doesn't end at delivery. Call or WhatsApp us anytime — we're happy to help with plant care, problems, or seasonal advice.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     GALLERY
+══════════════════════════════════════════ -->
+<section id="gallery" class="py-24 bg-cream-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="section-label">Our Work</span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-forest">Green Spaces We've Created</h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto">From compact balconies to sprawling office landscapes — each project tells a story.</p>
+    </div>
+
+    <div class="masonry">
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=600&q=80&fit=crop" alt="Home garden Pune" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Home Garden</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop&h=500" alt="Office greenery" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Office Greenery</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&fit=crop" alt="Nursery plants" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Nursery Collection</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=80&fit=crop&h=400" alt="Terrace garden" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Terrace Garden</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1552960394-c81add8de6b8?w=600&q=80&fit=crop" alt="Landscaping project" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Landscaping Project</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&q=80&fit=crop&h=350" alt="Indoor setup" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Indoor Setup</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1518335935020-cfd6580c1ab4?w=600&q=80&fit=crop" alt="Decorative plants" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Decorative Arrangement</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1504198453820-4fd51c6b8d46?w=600&q=80&fit=crop&h=420" alt="Garden design" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Garden Design</span></div>
+      </div>
+      <div class="masonry-item">
+        <img src="https://images.unsplash.com/photo-1532939163844-547f958e91b4?w=600&q=80&fit=crop" alt="Commercial landscaping" loading="lazy" />
+        <div class="masonry-overlay"><span class="text-white text-sm font-semibold">Commercial Landscape</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════ -->
+<section id="testimonials" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="section-label">Customer Reviews</span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-forest">What Our Customers Say</h2>
+      <p class="text-gray-500 mt-4">Real feedback from real people in Pune.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="testimonial-card bg-cream-100 border border-forest-100 rounded-2xl p-6">
+        <div class="flex gap-1 mb-4">
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+          "Got 12 indoor plants for my new flat in Baner. Rohan bhai personally came to suggest which plants would work best in my rooms. Delivery was on time, plants are still thriving 6 months later. Will always come back here."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-forest flex items-center justify-center text-white text-sm font-bold flex-shrink-0">P</div>
+          <div>
+            <div class="font-semibold text-forest text-sm">Priya Deshmukh</div>
+            <div class="text-gray-400 text-xs">Baner, Pune</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-forest text-white rounded-2xl p-6">
+        <div class="flex gap-1 mb-4">
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-white/80 text-sm leading-relaxed mb-5">
+          "We hired GreenVista for our restaurant's outdoor area in Viman Nagar. The transformation was unbelievable — customers now specifically compliment the greenery. Professional team, zero drama, great pricing."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">A</div>
+          <div>
+            <div class="font-semibold text-white text-sm">Amit Kulkarni</div>
+            <div class="text-white/60 text-xs">Restaurant Owner, Viman Nagar</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-cream-100 border border-forest-100 rounded-2xl p-6">
+        <div class="flex gap-1 mb-4">
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-300 text-sm"></i>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+          "I ordered a bulk supply for our IT park in Hinjewadi — 80+ plants. GreenVista handled it without any fuss. Delivery was sorted in two trips, and they even helped us with placement. Very professional team."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-sage flex items-center justify-center text-white text-sm font-bold flex-shrink-0">S</div>
+          <div>
+            <div class="font-semibold text-forest text-sm">Sneha Pawar</div>
+            <div class="text-gray-400 text-xs">Facilities Manager, Hinjewadi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-cream-100 border border-forest-100 rounded-2xl p-6">
+        <div class="flex gap-1 mb-4">
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+          "My terrace garden was completely designed by GreenVista and honestly it looks like something from a magazine. They check in occasionally to see how the plants are doing. That kind of follow-up is rare these days."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-olive flex items-center justify-center text-white text-sm font-bold flex-shrink-0">V</div>
+          <div>
+            <div class="font-semibold text-forest text-sm">Vijay Joshi</div>
+            <div class="text-gray-400 text-xs">Kothrud, Pune</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Google rating -->
+    <div class="mt-10 text-center">
+      <div class="inline-flex items-center gap-3 bg-cream-100 border border-forest-100 rounded-full px-6 py-3">
+        <img src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_74x24dp.png" alt="Google" class="h-5 object-contain" />
+        <div class="flex gap-1">
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i><i class="fas fa-star text-amber-400 text-sm"></i>
+          <i class="fas fa-star text-amber-400 text-sm"></i>
+        </div>
+        <span class="font-semibold text-forest text-sm">4.9 / 5</span>
+        <span class="text-gray-400 text-sm">•  180+ reviews</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CTA BANNER
+══════════════════════════════════════════ -->
+<section class="py-20 bg-gradient-to-br from-forest via-[#1e5c3f] to-sage relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10"
+       style="background-image: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&q=60&fit=crop'); background-size:cover; background-position:center;"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="font-serif text-4xl sm:text-5xl text-white mb-5">
+      Looking for the Right Plants for<br class="hidden sm:block" /> Your Home or Business?
+    </h2>
+    <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">
+      Tell us your space, your needs, your budget — and we'll handle the rest. Free consultation, no pressure.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:+919876543210"
+         class="inline-flex items-center justify-center gap-2.5 bg-white text-forest font-semibold px-8 py-4 rounded-full hover:bg-cream-200 transition-all shadow-xl text-base">
+        <i class="fas fa-phone"></i> Call Now: +91 98765 43210
+      </a>
+      <a href="https://wa.me/919876543210?text=Hi%20GreenVista!%20I%27d%20like%20a%20free%20consultation." target="_blank"
+         class="inline-flex items-center justify-center gap-2.5 bg-[#25d366] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#1fb85a] transition-all shadow-lg text-base">
+        <i class="fab fa-whatsapp text-lg"></i> WhatsApp Inquiry
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PROCESS
+══════════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="section-label">How It Works</span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-forest">Simple, Seamless Process</h2>
+      <p class="text-gray-500 mt-4">From your first inquiry to a beautiful green space — here's how we work.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="text-center group">
+        <div class="relative inline-block mb-6">
+          <div class="w-16 h-16 rounded-2xl bg-forest/10 flex items-center justify-center mx-auto group-hover:bg-forest transition-colors">
+            <i class="fas fa-phone text-forest group-hover:text-white text-xl transition-colors"></i>
+          </div>
+          <div class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-forest text-white text-xs font-bold flex items-center justify-center">1</div>
+          <!-- Connector line (desktop) -->
+          <div class="hidden lg:block absolute top-8 left-[calc(100%+0.5rem)] w-[calc(100%-1rem)] h-0.5 bg-forest-100"></div>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Contact Us</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Call, WhatsApp, or fill the contact form. Tell us what you need — we respond within the hour during business hours.</p>
+      </div>
+
+      <div class="text-center group">
+        <div class="relative inline-block mb-6">
+          <div class="w-16 h-16 rounded-2xl bg-forest/10 flex items-center justify-center mx-auto group-hover:bg-forest transition-colors">
+            <i class="fas fa-comments text-forest group-hover:text-white text-xl transition-colors"></i>
+          </div>
+          <div class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-forest text-white text-xs font-bold flex items-center justify-center">2</div>
+          <div class="hidden lg:block absolute top-8 left-[calc(100%+0.5rem)] w-[calc(100%-1rem)] h-0.5 bg-forest-100"></div>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Get Expert Advice</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Our plant experts understand your space, light conditions, and lifestyle before recommending anything. No upselling, genuine guidance.</p>
+      </div>
+
+      <div class="text-center group">
+        <div class="relative inline-block mb-6">
+          <div class="w-16 h-16 rounded-2xl bg-forest/10 flex items-center justify-center mx-auto group-hover:bg-forest transition-colors">
+            <i class="fas fa-leaf text-forest group-hover:text-white text-xl transition-colors"></i>
+          </div>
+          <div class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-forest text-white text-xs font-bold flex items-center justify-center">3</div>
+          <div class="hidden lg:block absolute top-8 left-[calc(100%+0.5rem)] w-[calc(100%-1rem)] h-0.5 bg-forest-100"></div>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Choose Plants</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Browse our collection online or visit our nursery. We help you shortlist the right plants and pots within your preferred budget.</p>
+      </div>
+
+      <div class="text-center group">
+        <div class="relative inline-block mb-6">
+          <div class="w-16 h-16 rounded-2xl bg-sage flex items-center justify-center mx-auto group-hover:bg-forest transition-colors">
+            <i class="fas fa-truck text-white text-xl"></i>
+          </div>
+          <div class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-sage text-white text-xs font-bold flex items-center justify-center">4</div>
+        </div>
+        <h3 class="font-serif text-xl text-forest mb-2">Delivery & Setup</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Safe doorstep delivery, careful placement, and basic setup guidance included. Your space goes green — hassle-free.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section class="py-24 bg-cream-100">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="section-label">FAQs</span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-forest">Commonly Asked Questions</h2>
+    </div>
+
+    <div class="space-y-3">
+
+      <div class="faq-item bg-white rounded-2xl border border-forest-100 overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-forest-50 transition-colors" onclick="toggleFaq(this)">
+          <span class="font-semibold text-forest pr-4">Which plants are best for apartments in Pune?</span>
+          <i class="faq-icon fas fa-plus text-sage flex-shrink-0"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-500 text-sm leading-relaxed pb-5">For Pune apartments, we recommend Snake Plant, Areca Palm, Money Plant, Peace Lily, and ZZ Plant. These thrive in low to medium light, survive AC environments, and are easy to maintain. If you have a sunny balcony, you can also try Aloe Vera, herbs like Tulsi and Mint, or dwarf fruit plants.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-forest-100 overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-forest-50 transition-colors" onclick="toggleFaq(this)">
+          <span class="font-semibold text-forest pr-4">Do you provide delivery across Pune?</span>
+          <i class="faq-icon fas fa-plus text-sage flex-shrink-0"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-500 text-sm leading-relaxed pb-5">Yes! We deliver across Pune including Baner, Wakad, Kothrud, Hadapsar, Viman Nagar, Koregaon Park, Hinjewadi, Pimpri-Chinchwad, and surrounding areas. Delivery charges depend on order size and location. For bulk orders, we often offer free delivery.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-forest-100 overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-forest-50 transition-colors" onclick="toggleFaq(this)">
+          <span class="font-semibold text-forest pr-4">Do you offer landscaping services for homes and offices?</span>
+          <i class="faq-icon fas fa-plus text-sage flex-shrink-0"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-500 text-sm leading-relaxed pb-5">Absolutely. We offer full landscaping services — from design consultation and plant selection to installation and maintenance. We work with homes, society compounds, office campuses, restaurants, hotels, and schools. A site visit and consultation are always included before we quote anything.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-forest-100 overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-forest-50 transition-colors" onclick="toggleFaq(this)">
+          <span class="font-semibold text-forest pr-4">Can businesses or institutions order in bulk?</span>
+          <i class="faq-icon fas fa-plus text-sage flex-shrink-0"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-500 text-sm leading-relaxed pb-5">Yes, bulk orders are welcome and we offer special commercial pricing. We've supplied plants to IT parks, hospitals, schools, restaurants, housing societies, and event decorators. Just WhatsApp or call us with your requirement and quantity and we'll share a custom quote quickly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-forest-100 overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-forest-50 transition-colors" onclick="toggleFaq(this)">
+          <span class="font-semibold text-forest pr-4">How do I maintain indoor plants after buying?</span>
+          <i class="faq-icon fas fa-plus text-sage flex-shrink-0"></i>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-500 text-sm leading-relaxed pb-5">We provide basic care instructions with every plant. Most indoor plants need watering every 3–5 days (less in winter), indirect sunlight, and occasional wiping of leaves. Avoid overwatering — it's the most common mistake. You can also WhatsApp us photos if a plant looks unwell; we'll guide you through it.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section id="contact" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="font-serif text-4xl sm:text-5xl text-forest">Let's Start Your Green Journey</h2>
+      <p class="text-gray-500 mt-4 max-w-xl mx-auto">Whether you need a single plant or a full landscaping project, we'd love to hear from you.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-10">
+
+      <!-- Contact info -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <div class="flex items-start gap-4 p-5 rounded-2xl bg-forest-50 border border-forest-100">
+          <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-phone text-white"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-forest">Call Us</div>
+            <a href="tel:+919876543210" class="text-sage text-sm hover:text-forest transition-colors">+91 98765 43210</a>
+            <div class="text-xs text-gray-400 mt-0.5">Mon–Sat, 9 AM to 7 PM</div>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 p-5 rounded-2xl bg-forest-50 border border-forest-100">
+          <div class="w-11 h-11 rounded-xl bg-[#25d366] flex items-center justify-center flex-shrink-0">
+            <i class="fab fa-whatsapp text-white text-lg"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-forest">WhatsApp</div>
+            <a href="https://wa.me/919876543210" target="_blank" class="text-sage text-sm hover:text-forest transition-colors">+91 98765 43210</a>
+            <div class="text-xs text-gray-400 mt-0.5">Quick replies, usually within 30 min</div>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 p-5 rounded-2xl bg-forest-50 border border-forest-100">
+          <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-envelope text-white"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-forest">Email</div>
+            <a href="mailto:hello@greenvistapune.in" class="text-sage text-sm hover:text-forest transition-colors">hello@greenvistapune.in</a>
+            <div class="text-xs text-gray-400 mt-0.5">We reply within 24 hours</div>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 p-5 rounded-2xl bg-forest-50 border border-forest-100">
+          <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-map-marker-alt text-white"></i>
+          </div>
+          <div>
+            <div class="font-semibold text-forest">Visit Our Nursery</div>
+            <div class="text-gray-600 text-sm leading-snug mt-1">Survey No. 47, Near Panchvati Society,<br />Kothrud, Pune – 411038,<br />Maharashtra</div>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div>
+          <div class="text-forest font-semibold text-sm mb-3">Follow Us</div>
+          <div class="flex gap-3">
+            <a href="#" class="w-10 h-10 rounded-xl bg-forest-50 border border-forest-100 flex items-center justify-center text-forest hover:bg-forest hover:text-white hover:border-forest transition-all">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-forest-50 border border-forest-100 flex items-center justify-center text-forest hover:bg-forest hover:text-white hover:border-forest transition-all">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-forest-50 border border-forest-100 flex items-center justify-center text-forest hover:bg-forest hover:text-white hover:border-forest transition-all">
+              <i class="fab fa-youtube text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inquiry form -->
+      <div class="lg:col-span-3 bg-cream-100 rounded-3xl p-8 border border-forest-100">
+        <h3 class="font-serif text-2xl text-forest mb-6">Send Us an Inquiry</h3>
+        <form id="inquiry-form" onsubmit="handleSubmit(event)" class="space-y-5">
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-sm font-medium text-forest mb-1.5" for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="Ravi Sharma"
+                     class="w-full bg-white border border-forest-100 rounded-xl px-4 py-3 text-sm text-gray-700 placeholder-gray-400 transition-all" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-forest mb-1.5" for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210"
+                     class="w-full bg-white border border-forest-100 rounded-xl px-4 py-3 text-sm text-gray-700 placeholder-gray-400 transition-all" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-forest mb-1.5" for="service">What Are You Looking For?</label>
+            <select id="service" name="service" class="w-full bg-white border border-forest-100 rounded-xl px-4 py-3 text-sm text-gray-700 transition-all">
+              <option value="">Select a service…</option>
+              <option>Indoor Plants</option>
+              <option>Outdoor Plants</option>
+              <option>Flowering Plants</option>
+              <option>Fruit Plants</option>
+              <option>Landscaping Services</option>
+              <option>Bulk Plant Supply</option>
+              <option>Garden Consultation</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-forest mb-1.5" for="requirement">Tell Us More</label>
+            <textarea id="requirement" name="requirement" rows="4" placeholder="Describe your space, plant requirements, budget, or any questions…"
+                      class="w-full bg-white border border-forest-100 rounded-xl px-4 py-3 text-sm text-gray-700 placeholder-gray-400 resize-none transition-all"></textarea>
+          </div>
+
+          <button type="submit"
+                  class="w-full bg-forest text-white font-semibold py-4 rounded-xl hover:bg-sage transition-colors flex items-center justify-center gap-2 text-sm">
+            <i class="fas fa-paper-plane"></i>
+            Send My Inquiry
+          </button>
+
+          <p class="text-xs text-gray-400 text-center">We typically respond within a few hours. Your information is kept private.</p>
+        </form>
+
+        <!-- Success message (hidden) -->
+        <div id="form-success" class="hidden text-center py-10">
+          <div class="w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-check text-forest text-2xl"></i>
+          </div>
+          <h4 class="font-serif text-2xl text-forest mb-2">Inquiry Sent!</h4>
+          <p class="text-gray-500 text-sm">Thank you! We'll get back to you shortly. You can also reach us on WhatsApp for a faster response.</p>
+          <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-2 mt-5 bg-[#25d366] text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-[#1fb85a] transition-colors">
+            <i class="fab fa-whatsapp"></i> Continue on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="bg-forest-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="w-9 h-9 rounded-xl bg-sage flex items-center justify-center">
+            <i class="fas fa-leaf text-white text-sm"></i>
+          </div>
+          <div>
+            <div class="font-serif text-xl">GreenVista</div>
+            <div class="text-xs text-white/50 tracking-widest uppercase">Plant Nursery</div>
+          </div>
+        </div>
+        <p class="text-white/55 text-sm leading-relaxed mb-5">
+          Pune's trusted plant nursery since 2008. Bringing greenery to homes and businesses with love and expertise.
+        </p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-sage transition-colors"><i class="fab fa-instagram text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-sage transition-colors"><i class="fab fa-facebook-f text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-sage transition-colors"><i class="fab fa-youtube text-sm"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-widest mb-5 text-white/70">Quick Links</h4>
+        <ul class="space-y-2.5 text-sm text-white/55">
+          <li><a href="#about"        class="hover:text-white transition-colors">About Us</a></li>
+          <li><a href="#services"     class="hover:text-white transition-colors">Our Services</a></li>
+          <li><a href="#plants"       class="hover:text-white transition-colors">Featured Plants</a></li>
+          <li><a href="#gallery"      class="hover:text-white transition-colors">Gallery</a></li>
+          <li><a href="#testimonials" class="hover:text-white transition-colors">Customer Reviews</a></li>
+          <li><a href="#contact"      class="hover:text-white transition-colors">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-widest mb-5 text-white/70">Services</h4>
+        <ul class="space-y-2.5 text-sm text-white/55">
+          <li><a href="#services" class="hover:text-white transition-colors">Indoor Plants</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">Outdoor Plants</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">Flowering Plants</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">Fruit Plants</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">Landscaping</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">Bulk Supply</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-widest mb-5 text-white/70">Contact</h4>
+        <ul class="space-y-3 text-sm text-white/55">
+          <li class="flex items-start gap-2.5">
+            <i class="fas fa-map-marker-alt mt-0.5 text-sage flex-shrink-0"></i>
+            <span>Survey No. 47, Near Panchvati Society, Kothrud, Pune – 411038</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <i class="fas fa-phone text-sage flex-shrink-0"></i>
+            <a href="tel:+919876543210" class="hover:text-white transition-colors">+91 98765 43210</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <i class="fab fa-whatsapp text-sage flex-shrink-0"></i>
+            <a href="https://wa.me/919876543210" target="_blank" class="hover:text-white transition-colors">+91 98765 43210</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <i class="fas fa-envelope text-sage flex-shrink-0"></i>
+            <a href="mailto:hello@greenvistapune.in" class="hover:text-white transition-colors">hello@greenvistapune.in</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <i class="fas fa-clock text-sage flex-shrink-0"></i>
+            <span>Mon–Sat: 9 AM – 7 PM</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
+      <p>&copy; 2024 GreenVista Plant Nursery. All rights reserved.</p>
+      <p>Crafted with <i class="fas fa-heart text-red-400 text-xs mx-1"></i> in Pune, Maharashtra</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  const navLogoTexts = document.querySelectorAll('.nav-logo-text');
+  const navLogoSubs  = document.querySelectorAll('.nav-logo-sub');
+  const navLinks     = document.querySelectorAll('.nav-text');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+      navLinks.forEach(l => { l.classList.remove('text-white/90','text-white'); l.classList.add('text-forest/80'); });
+      navLogoTexts.forEach(t => { t.classList.remove('text-white'); t.classList.add('text-forest'); });
+      navLogoSubs.forEach(t => { t.classList.remove('text-forest-200'); t.classList.add('text-gray-400'); });
+    } else {
+      navbar.classList.remove('scrolled');
+      navLinks.forEach(l => { l.classList.add('text-white/90'); l.classList.remove('text-forest/80'); });
+      navLogoTexts.forEach(t => { t.classList.add('text-white'); t.classList.remove('text-forest'); });
+      navLogoSubs.forEach(t => { t.classList.add('text-forest-200'); t.classList.remove('text-gray-400'); });
+    }
+  });
+
+  /* ── Back to top button ── */
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('show', window.scrollY > 400);
+  });
+
+  /* ── Mobile menu ── */
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.add('hidden');
+  }
+
+  /* ── Active nav highlighting ── */
+  const sections = document.querySelectorAll('section[id]');
+  const allNavLinks = document.querySelectorAll('.nav-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        allNavLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + entry.target.id) link.classList.add('active');
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+
+  /* ── FAQ toggle ── */
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = answer.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-answer.open').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+    if (!isOpen) {
+      answer.classList.add('open');
+      item.classList.add('active');
+    }
+  }
+
+  /* ── Form submit ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('inquiry-form');
+    const success = document.getElementById('form-success');
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>
